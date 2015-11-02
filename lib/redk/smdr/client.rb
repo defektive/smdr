@@ -12,7 +12,7 @@ class Redk::Smdr::Client
     socket = TCPSocket.open(@host, @port)
     begin
       while line = socket.gets
-        yield Redk::Smdr::Matcher.match(line, Redk::Smdr::Matcher::Extended.level_2)
+        yield Redk::Smdr::Matcher.match(line, Redk::Smdr::Matcher::Extended.level_2), line
       end
     ensure
       socket.close

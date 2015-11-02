@@ -10,7 +10,8 @@ class SMDRClient < Thor
   def client()
     client = Redk::Smdr::Client.new(options[:host], options[:port])
     puts "Connecting to #{options[:host]}:#{options[:port]}"
-    client.read do |data|
+    client.read do |data, line|
+      puts line
       data.each do |key, value|
         puts "\t#{key} => #{value}"
       end
